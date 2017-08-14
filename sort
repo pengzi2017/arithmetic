@@ -1,0 +1,65 @@
+template<class T>
+void mySwap(T &x, T &y)
+{
+	T temp = x;
+	x = y;
+	y = temp;
+}
+template<class T>
+void insertionSort(T a[], int n,int tab=1)  //插入排序，tap=1升序，其他tap值为降序
+{
+	int i=1;
+	while (i < n)
+	{
+		for (int j = 0; j < i; j++)
+		{
+			if (tab == 1) {
+				if (a[j] >= a[i])
+					mySwap(a[j], a[i]);
+			}
+			else {
+				if (a[j] <= a[i])
+					mySwap(a[j], a[i]);
+			}
+		}
+		i++;
+	}
+}
+
+template<class T>
+void selectionSort(T a[], int n)            //选择排序，升序
+{
+	int i = 0;
+	while (i<n)
+	{
+		T min = a[i];
+		int minTab = i;
+		for (int j = i; j < n; j++)
+		{
+			if (a[j] <= min)
+			{
+				min = a[j];
+				minTab = j;
+			}
+		}
+		mySwap(a[i], a[minTab]);
+		i++;
+	}
+}
+template<class T>
+void bubbleSort(T a[], int n)                  //冒泡排序，升序
+{
+	int bubbleTab;
+	do
+	{
+		bubbleTab = 0;
+		for (int i = 0; i < n - 1; i++)
+		{
+			if (a[i] > a[i + 1])
+			{
+				mySwap(a[i], a[i + 1]);
+				bubbleTab++;
+			}
+		}
+	} while (bubbleTab != 0);
+}
